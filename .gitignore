@@ -1,0 +1,14 @@
+# Data
+data/raw/
+data/processed/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Environment
+.env
+
+# macOS
+.DS_Store
