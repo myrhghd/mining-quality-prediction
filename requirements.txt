@@ -1,5 +1,7 @@
+ipykernel==7.3.0
 kaggle==2.2.4
 mlflow==3.14.0
+nbconvert==7.17.1
 numpy==2.5.2
 pandas==2.3.3
 pyarrow==24.0.0
