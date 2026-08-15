@@ -1,0 +1,7 @@
+configuration,fold,predictor_count,silica_excursion_threshold,n_train,n_validation,train_positive_count,train_positive_rate,validation_positive_count,validation_positive_rate,precision,recall,f1,pr_auc,roc_auc,true_negatives,false_positives,false_negatives,true_positives,false_negative_rate,false_positive_rate,accuracy,source_artifact
+sensor_only,1,57,4.028,1743,482,175,0.100401606425703,27,0.0560165975103734,0,0,0,0.0604623953849131,0.505575905575906,455,0,27,0,1,0,0.943983402489627,data/processed/excursion_classifier_results.parquet
+sensor_only,2,57,3.877,2224,483,223,0.100269784172662,28,0.0579710144927536,0,0,0,0.23800134440189,0.688226059654631,455,0,28,0,1,0,0.942028985507246,data/processed/excursion_classifier_results.parquet
+sensor_only,3,57,3.82,2708,481,272,0.100443131462334,40,0.0831600831600832,0,0,0,0.134563788214713,0.617063492063492,441,0,40,0,1,0,0.916839916839917,data/processed/excursion_classifier_results.parquet
+feed_enhanced,1,59,4.028,1743,482,175,0.100401606425703,27,0.0560165975103734,0,0,0,0.058014355788085,0.50980870980871,455,0,27,0,1,0,0.943983402489627,data/processed/excursion_classifier_results.parquet
+feed_enhanced,2,59,3.877,2224,483,223,0.100269784172662,28,0.0579710144927536,0,0,0,0.334573490828722,0.704081632653061,455,0,28,0,1,0,0.942028985507246,data/processed/excursion_classifier_results.parquet
+feed_enhanced,3,59,3.82,2708,481,272,0.100443131462334,40,0.0831600831600832,0,0,0,0.148986219512219,0.660600907029478,441,0,40,0,1,0,0.916839916839917,data/processed/excursion_classifier_results.parquet

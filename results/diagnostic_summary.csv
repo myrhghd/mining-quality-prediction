@@ -1,0 +1,7 @@
+diagnostic,category,value,unit,reporting_threshold,source_row_count,predictor_count,aggregation,source_artifact
+predictor_target_spearman,training,0.0705498811306293,mean_absolute_correlation,,171,57,mean(abs(train_spearman)),data/processed/generalization_diagnostics.parquet
+predictor_target_spearman,validation,0.067284033968586,mean_absolute_correlation,,171,57,mean(abs(validation_spearman)),data/processed/generalization_diagnostics.parquet
+predictor_standardized_drift,material,25,predictor_count,0.25,171,57,count(mean_by_predictor(abs(standardized_mean_difference)) >= threshold),data/processed/generalization_diagnostics.parquet
+relationship_stability,reverses,15,predictor_count,0.1,171,57,count(classification(material=0.10) == reverses),data/processed/generalization_diagnostics.parquet
+relationship_stability,weakens,2,predictor_count,0.1,171,57,count(classification(material=0.10) == weakens),data/processed/generalization_diagnostics.parquet
+relationship_stability,stable,40,predictor_count,0.1,171,57,count(classification(material=0.10) == stable),data/processed/generalization_diagnostics.parquet

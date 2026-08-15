@@ -1,0 +1,16 @@
+experiment,model,fold,n_train,n_validation,predictor_count,rmse,mae,r2,source_artifact
+baseline,training_mean,1,1743,482,,0.909907959298121,0.741359962672266,-0.0695558771484484,data/processed/baseline_results.parquet
+baseline,training_mean,2,2224,483,,0.99998175178582,0.8558637934373,-0.246922954154198,data/processed/baseline_results.parquet
+baseline,training_mean,3,2708,481,,0.990766218735904,0.715863269530182,-0.000176660489647595,data/processed/baseline_results.parquet
+baseline,persistence,1,1743,482,,0.759215307944609,0.467634854771784,0.255373543198325,data/processed/baseline_results.parquet
+baseline,persistence,2,2224,483,,0.778187361345697,0.430269151138716,0.244866362663051,data/processed/baseline_results.parquet
+baseline,persistence,3,2708,481,,0.723430410787077,0.43024948024948,0.466753691692911,data/processed/baseline_results.parquet
+conventional_regression,linear_regression,1,1743,482,57,0.910829249451937,0.67790189274109,-0.0717228438998385,data/processed/linear_regression_results.parquet
+conventional_regression,linear_regression,2,2224,483,57,0.949218298873869,0.759879390288052,-0.123537762758884,data/processed/linear_regression_results.parquet
+conventional_regression,linear_regression,3,2708,481,57,0.998902903089702,0.745669096206267,-0.0166720533712661,data/processed/linear_regression_results.parquet
+conventional_regression,random_forest,1,1743,482,57,0.897683723736284,0.657331630820769,-0.0410108411432173,data/processed/random_forest_results.parquet
+conventional_regression,random_forest,2,2224,483,57,0.936664709619316,0.761487836937271,-0.0940162823333106,data/processed/random_forest_results.parquet
+conventional_regression,random_forest,3,2708,481,57,0.973064108620398,0.716826010231461,0.0352445448443131,data/processed/random_forest_results.parquet
+conventional_regression,gradient_boosted_trees,1,1743,482,57,1.03564630077812,0.778485740740353,-0.385579556849493,data/processed/gradient_boosted_trees_results.parquet
+conventional_regression,gradient_boosted_trees,2,2224,483,57,1.08750432426897,0.861135426406497,-0.47474677518694,data/processed/gradient_boosted_trees_results.parquet
+conventional_regression,gradient_boosted_trees,3,2708,481,57,1.07510866884642,0.789022581825454,-0.177711897576894,data/processed/gradient_boosted_trees_results.parquet
