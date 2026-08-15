@@ -5,10 +5,33 @@ data/processed/
 # Python
 __pycache__/
 *.py[cod]
-.ipynb_checkpoints/
+.pytest_cache/
+
+# Coverage
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
 
 # Environment
 .env
+/.venv/
+/venv/
+/env/
+/.conda/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Spark
+/spark-warehouse/
+/metastore_db/
+/derby.log
+
+# Runtime
+*.log
+*.tmp
+*.swp
 
 # macOS
 .DS_Store

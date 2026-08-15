@@ -6,3 +6,6 @@ channels:
 dependencies:
   - python=3.13
   - openjdk=17
+  - pip
+  - pip:
+      - -r requirements.txt
