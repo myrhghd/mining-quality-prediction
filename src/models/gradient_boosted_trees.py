@@ -1,12 +1,10 @@
 """Spark MLlib Gradient Boosted Trees benchmark for hourly `% Silica Concentrate`.
 
-Third sensor based regression model for the project. The question this
-milestone asks is narrow: does sequential boosting capture useful
-nonlinear structure beyond the bagged Random Forest, while the data, the
-57 sensor predictors, and the chronological validation design are held
-constant? It does not ask whether boosting is the right eventual model
-family, and neither a positive nor a negative result here settles that
-broader question.
+Completed controlled benchmark that tests whether sequential boosting
+captures useful nonlinear structure beyond the bagged Random Forest. The
+data, 57 sensor predictors, and chronological validation design are held
+constant. Gradient Boosted Trees produced higher RMSE than Random Forest
+in every development fold under this design.
 
 Evaluated on the three development validation folds only, using the
 predictor scope, split assignments, and Spark environment handling
@@ -21,9 +19,8 @@ any feature cannot change which split a tree chooses; scaling would only
 relabel the predictor axis.
 
 This is a fixed, untuned benchmark. The configuration was set before any
-Gradient Boosted Trees validation result was observed, and it is not
-adjusted based on the results below. It is not claimed to be optimal and
-should not be read as a production configuration.
+Gradient Boosted Trees validation result was observed and was not
+adjusted afterward. It is not claimed to be optimal or deployable.
 """
 
 from __future__ import annotations
@@ -68,11 +65,10 @@ EXPECTED_PREDICTOR_COUNT = 57
 #
 # One configuration is used unchanged across all three folds, chosen
 # before viewing any Gradient Boosted Trees validation result. No
-# parameter search is performed at this milestone.
+# parameter search is performed.
 #
-# maxIter=100          One hundred boosting iterations give the ensemble
-#                      enough sequential learners for an initial
-#                      benchmark at this learning rate.
+# maxIter=100          One hundred boosting iterations define the
+#                      controlled benchmark at this learning rate.
 # maxDepth=5           Allows interactions between the sensor aggregates
 #                      while limiting how complex any individual tree in
 #                      the sequence becomes.
@@ -92,8 +88,8 @@ EXPECTED_PREDICTOR_COUNT = 57
 # seed=42              Fixes the row sampling so the experiment is
 #                      reproducible.
 #
-# None of these values are claimed to be optimal; they are a defensible
-# starting point for a first boosting pass.
+# These values define the controlled benchmark and are not claimed to be
+# optimal.
 MAX_ITER = 100
 MAX_DEPTH = 5
 MAX_BINS = 32
@@ -103,7 +99,7 @@ SUBSAMPLING_RATE = 0.8
 LOSS_TYPE = "squared"
 SEED = 42
 
-# The specification this milestone must satisfy, kept separate from the
+# The specification this benchmark must satisfy, kept separate from the
 # constants above so a guard can compare a built pipeline against it
 # rather than against itself.
 FIXED_CONFIGURATION = {

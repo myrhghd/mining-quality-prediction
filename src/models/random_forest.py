@@ -1,12 +1,12 @@
 """Spark MLlib Random Forest benchmark for hourly `% Silica Concentrate`.
 
-Second sensor based regression model for the project. The question this
-milestone asks is narrow: do nonlinear relationships and interactions
-among the same 57 sensor predictors improve forward chronological
-validation performance relative to Linear Regression? It does not ask
-whether Random Forest is the right eventual model, and a positive or
-negative result here should not be read as a verdict on that broader
-question.
+Completed nonlinear regression benchmark that tests whether relationships
+and interactions among the same 57 sensor predictors improve forward
+chronological validation performance relative to Linear Regression.
+Random Forest produced the lowest RMSE of the three conventional
+regression benchmarks in every development fold. Forward R squared
+remained negative in two of three folds, so the result does not support
+deployment as a soft sensor.
 
 Evaluated on the three development validation folds only, using the
 predictor scope, split assignments, and Spark environment handling
@@ -20,9 +20,9 @@ change which split a tree chooses; scaling would only relabel the
 predictor axis, not change the model.
 
 This is a fixed, untuned nonlinear benchmark. The configuration was set
-before any Random Forest validation result was observed, and it is not
-adjusted based on the results below. It should not be read as a
-production configuration.
+before any Random Forest validation result was observed and was not
+adjusted afterward. It is the strongest conventional regression
+benchmark established during development, not a deployable configuration.
 """
 
 from __future__ import annotations
@@ -65,9 +65,8 @@ PREDICTION_COLUMN = "prediction"
 # ---------------------------------------------------------------------
 #
 # One configuration is used unchanged across all three folds, chosen
-# before viewing any Random Forest validation result. This is an initial
-# nonlinear benchmark, not a tuned production model, and no parameter
-# search is performed.
+# before viewing any Random Forest validation result. This is a fixed
+# nonlinear benchmark, and no parameter search is performed.
 #
 # numTrees=200        A reasonably stable ensemble average without
 #                      excessive local runtime on a laptop scale Spark
@@ -88,8 +87,8 @@ PREDICTION_COLUMN = "prediction"
 # seed=42              Fixes the row and feature sampling so the
 #                      experiment is reproducible.
 #
-# None of these values are claimed to be optimal; they are a defensible
-# starting point for a first nonlinear pass.
+# These values define the controlled benchmark and are not claimed to be
+# optimal.
 NUM_TREES = 200
 MAX_DEPTH = 8
 MIN_INSTANCES_PER_NODE = 5

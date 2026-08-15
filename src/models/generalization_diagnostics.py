@@ -1,10 +1,12 @@
 """Diagnosis of why the sensor models do not generalize forward.
 
-Three model families have now been evaluated on the same chronological
-folds, and none of them beats a constant. Random Forest remains the
-strongest, and its R squared is still negative on two of the three
-development folds. Shifting the target by 1 or 2 hours did not change
-that. This module asks why, rather than proposing a fourth model.
+Three conventional regression model families were evaluated on the same
+chronological folds. Random Forest improved RMSE relative to the training
+mean baseline, but forward R squared remained negative in two of three
+development folds. Predictor to target relationships were weak and
+unstable. The 1 and 2 hour target shifts did not establish reliable
+forward generalization. This module diagnoses those results without
+proposing another model family.
 
 It measures five things and keeps them separate:
 

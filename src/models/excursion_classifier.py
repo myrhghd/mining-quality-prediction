@@ -1,12 +1,12 @@
 """High silica excursion classification under chronological validation.
 
-Every experiment so far asked the same question: what will the silica
-concentrate be this hour. None of them answered it well. The feed
-chemistry experiment produced one result that pointed elsewhere, though.
-Adding `iron_feed` and `silica_feed` made forward regression worse on all
-three development folds, and yet it reduced error on high silica hours in
-all three. That is the signature of information about a state rather than
-information about a level.
+The regression experiments did not support reliable forward prediction
+of exact silica concentration. The persisted feed chemistry regression
+results show that adding `iron_feed` and `silica_feed` increased RMSE in
+all three development folds. The feed experiment also calculated a high
+silica subgroup analysis at runtime, but that table is not preserved in
+the committed result artifact and is not treated here as independently
+reproducible evidence.
 
 This module tests that reformulation directly. The target becomes a
 binary label, high silica excursion or not, and the question becomes
@@ -16,6 +16,10 @@ configurations are compared:
 * the sensor only classifier, the existing 57 core sensor aggregates
 * the feed enhanced classifier, those same 57 plus `iron_feed` and
   `silica_feed`
+
+The persisted classifier results show that feed chemistry improved ROC
+AUC in all three folds and PR AUC in two. The result remained weak and
+inconsistent and did not produce a usable fixed threshold warning rule.
 
 Label construction
 ------------------

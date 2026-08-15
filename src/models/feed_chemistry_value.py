@@ -1,10 +1,10 @@
 """Information value of incoming feed chemistry for `% Silica Concentrate`.
 
-Two model families and a wider dynamic sensor representation have now
-been evaluated on the same chronological folds, and none of them
-generalizes forward from process sensors alone. Every one of those
-experiments varied how the plant's own operation was described. This one
-varies what the plant is being fed.
+Linear Regression, Random Forest, Gradient Boosted Trees, and a wider
+dynamic sensor representation were evaluated on the same chronological
+folds. None provided reliable forward generalization from process sensors
+alone. Those experiments varied how the plant operation was described.
+This experiment varies what the plant is being fed.
 
 Two predictor configurations are evaluated:
 

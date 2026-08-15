@@ -1,10 +1,10 @@
 """Sensor to target temporal alignment experiment.
 
-The fixed model family comparison is finished, and no model beat the
-training mean constant on forward validation. One explanation that the
-comparison could not test is alignment: the hourly sensor aggregates and
-the hourly assay are joined at the same hour, but flotation is a
-residence time process, so the assay reported for hour `t` may reflect
+Random Forest was the strongest conventional regression benchmark, but
+its forward R squared remained negative in two of three development
+folds. One possible explanation was target alignment: the hourly sensor
+aggregates and hourly assay are joined at the same hour, but flotation is
+a residence time process, so the assay reported for hour `t` may reflect
 pulp that passed the sensors earlier.
 
 This module tests that directly. Sensor features stay at hour `t`. The
@@ -35,10 +35,16 @@ moves.
 
 Rows whose target hour is unavailable under that rule are removed rather
 than imputed, so each alignment is evaluated on slightly fewer hours than
-the one before it. Fold level counts and the removed row counts are
-reported alongside every metric, and a matched comparison over the hours
-that all three alignments score is reported as well, because RMSE over
-different row sets is not a like for like comparison on its own.
+the one before it. Fold level counts and removed row counts are reported
+alongside every metric. The runtime report also computes a matched
+comparison over hours scored by all three alignments, because RMSE over
+different row sets is not a like for like comparison.
+
+Headline mean RMSE decreased at the 1 and 2 hour shifts, but the shifted
+arms scored different row populations and mean R squared worsened. The
+stored `temporal_alignment_results.parquet` artifact does not contain the
+common hour table required for a direct like for like assessment. The
+recorded experiment decision therefore retained the 0 hour alignment.
 
 The final test period is never fitted on, never scored, and never used to
 select an alignment.

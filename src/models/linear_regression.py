@@ -1,10 +1,10 @@
 """Spark MLlib Linear Regression benchmark for hourly `% Silica Concentrate`.
 
-First sensor based regression model for the project, evaluated on the
-three development validation folds only. The final test period is never
-loaded into a scoring population here.
+Completed sensor based regression benchmark, evaluated on the three
+development validation folds only. The final test period is never loaded
+into a scoring population here.
 
-The production training path is Spark MLlib end to end: a Spark
+The benchmark uses Spark MLlib end to end: a Spark
 `Pipeline` of `VectorAssembler` then `StandardScaler` then
 `LinearRegression`, fitted independently for every fold. Metrics reuse
 the baseline module's implementations so model and baseline figures are
@@ -21,8 +21,8 @@ reach the training procedure.
 Predictor scope
 ---------------
 Only the 57 core sensor aggregates are used. Feed chemistry is excluded
-at this milestone because its real time availability is unresolved, and
-target derived metadata is excluded because it exists to protect split
+because its historical operational availability is unresolved. Target
+derived metadata is excluded because it exists to protect split
 boundaries, not to predict.
 """
 
@@ -84,9 +84,9 @@ RESULT_COLUMNS = [
 # Fixed model configuration
 # ---------------------------------------------------------------------
 #
-# One configuration is used unchanged across all three folds, chosen a
-# priori rather than from validation performance, since tuning is a later
-# milestone.
+# One configuration is used unchanged across all three folds. It was
+# chosen a priori rather than from validation performance, and no
+# parameter search was performed.
 #
 # `regParam=0.1` with `elasticNetParam=0.0` is ridge regression. Pure L2
 # is the appropriate first choice here because the 57 sensor aggregates
@@ -99,9 +99,9 @@ RESULT_COLUMNS = [
 # coefficients toward each other instead of arbitrarily selecting among
 # them.
 #
-# L1 is deliberately avoided: it performs feature selection, which is
-# explicitly a later milestone, and it would zero out members of
-# collinear groups in a way that is unstable across folds.
+# L1 is deliberately avoided because this benchmark does not perform
+# feature selection. It would zero out members of collinear groups in a
+# way that is unstable across folds.
 #
 # `standardization=False` because the pipeline's own `StandardScaler`
 # stage has already standardized the features. Leaving Spark's internal
@@ -449,7 +449,7 @@ def coefficient_diagnostics(
     Because the pipeline standardizes features before fitting, coefficient
     magnitudes are on a comparable scale and can be read as relative
     influence. They are reported as a diagnostic only; no feature
-    selection is performed from them at this milestone.
+    selection is performed from them in this benchmark.
     """
     rows = []
     for result in fold_results:
